@@ -39,14 +39,13 @@ class Dashboard extends Component {
 
   handleScroll = (e) => {
     // console.log("Scrolled !!!!");
-    let lastCard = document.querySelector('div.card-main-wrapper:last-of-type');
+    let lastCard = document.querySelector("div.card-main-wrapper:last-of-type");
     const lastCardOffset = lastCard.offsetTop + lastCard.clientHeight;
     const pageOffset = window.pageYOffset + window.innerHeight;
     var bottomOffset = 20;
     if (pageOffset > lastCardOffset - bottomOffset) {
       this.loadMoreData();
     }
-    
   };
 
   componentDidMount = () => {
@@ -60,6 +59,13 @@ class Dashboard extends Component {
     const { colleges } = this.state;
 
     const showCollegeCards = colleges.map((item, index) => {
+      let nearest = item.famous_nearest_places;
+      let nearestArray = nearest.split(" ");
+
+      let offerText = item.offertext;
+      let offerArray = offerText.split(" ");
+      console.log(offerArray);
+
       return (
         <div className="card-main-wrapper" key={index}>
           <div className="top-card-wrapper position-relative">
@@ -69,79 +75,80 @@ class Dashboard extends Component {
               type="button"
               className="img-button-white-one position-absolute"
             >
-              Best college 2018
+              {item.tags[0]}
             </button>
             <button
               type="button"
               className="img-button-white-two position-absolute"
             >
-              2 Kms away
+              {item.tags[1]}
             </button>
-            <p className="ranking-text position-absolute">
-              #7 in 260 colleges in north campus
-            </p>
+            <p className="ranking-text position-absolute">#{item.ranking}</p>
             <button className="rating-img-top position-absolute">
               <span className="rate">
                 {" "}
-                <span className="variable">3.9</span>
+                <span className="variable">{item.rating}</span>
                 <span>/5</span>
               </span>
-              <span className="comment">Very Good</span>
+              <span className="comment">{item.rating_remarks}</span>
             </button>
             <div className="promoted-text position-absolute">PROMOTED</div>
-            {/* <div class="arrow-up-1 position-absolute"></div>
-                <div class="arrow-up-2 position-absolute"></div> */}
             <div className="arrow-right position-absolute" />
           </div>
           <div className="bottom-card-wrapper">
             <div className="bottom-upper-wrapper">
               <div className="bottom-left-card">
                 <div className="d-flex mb-7">
-                  <p className="college-name">
-                    Hansraj College Delhi University
-                  </p>{" "}
-                  <p>*****</p>
+                  <p className="college-name">{item.college_name}</p>{" "}
+                  <p className="ml-2">
+                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star non-checked"></span>
+                  </p>
                 </div>
                 <div className="d-flex mb-7 location">
-                  <p>Near Vishwavidyalya Metro Station</p>{" "}
+                  <p>{item.nearest_place[0]}</p>{" "}
                   <span className="ml-2"> | </span>{" "}
-                  <span className="ml-2 light">2 Kms away from bus stand</span>
+                  <span className="ml-2 light">{item.nearest_place[1]}</span>
                 </div>
                 <div className="d-flex mb-7 location">
                   <span className="green">93% Match :</span>{" "}
-                  <span className="dark ml-2">2.5kms</span>{" "}
-                  <span className="ml-2">from GTB Nagar</span>{" "}
-                  <span className="dark ml-2">7 Kms</span>{" "}
-                  <span className="ml-2">from Rajiv Chowk</span>
+                  <span className="dark ml-2">{nearestArray[0]}</span>{" "}
+                  <span className="ml-2">{`${nearestArray[1]} ${nearestArray[2]} ${nearestArray[3]}`}</span>{" "}
+                  <span className="dark ml-2">{`${nearestArray[4]} ${nearestArray[5]}`}</span>{" "}
+                  <span className="ml-2">{`${nearestArray[6]}  ${nearestArray[7]} ${nearestArray[8]}`}</span>
                 </div>
               </div>
               <div className="bottom-right-card">
                 <div className="d-flex right-flex">
-                  <span className="strike">₹6,8756</span>{" "}
+                  <span className="strike">₹{item.original_fees}</span>{" "}
                   <div className="red-box">
-                    20 <div className="arrow-left position-absolute" />
+                    {item.discount}{" "}
+                    <div className="arrow-left position-absolute" />
                   </div>
                 </div>
                 <div className="price">
-                  <span> ₹5,768</span>
+                  <span> ₹{item.discounted_fees}</span>
                 </div>
                 <div className="duration">
-                  <span>Per Semester(3 Months)</span>
+                  <span>{item.fees_cycle}</span>
                 </div>
               </div>
             </div>
             <div className="bottom-lower-wrapper d-flex">
               <div className="bottom-lower-left">
-                <span>Flat</span> <span className="dark">Rs</span>{" "}
-                <span className="dark green">2,000</span>{" "}
-                <span className="dark">off + upto Rs</span>{" "}
-                <span className="dark">500</span>{" "}
-                <span className="dark">wallet! to avail...</span>{" "}
-                <span className="dark blue ml-2">LOGIN</span>
+                <span>{offerArray[0]}</span> <span className="dark">{offerArray[0]}</span>{" "}
+                <span className="dark green">{offerArray[2]}</span>{" "}
+                <span className="dark">{`${offerArray[3]} ${offerArray[4]} ${offerArray[5]} ${offerArray[6]}`}</span>{" "}
+                <span className="dark">{`${offerArray[7]}`}</span>{" "}
+                <span className="dark">{`${offerArray[8]} ${offerArray[9]} ${offerArray[10]}`}</span>{" "}
+                <span className="dark blue ml-2">{offerArray[11]}</span>
               </div>
               <div className="bottom-lower-right">
-                <span>Free Cancellation</span> <span>.</span>{" "}
-                <span>Free Wi-Fi</span>
+                <span>{item.amenties[0]}</span> <span>.</span>{" "}
+                <span>{item.amenties[1]}</span>
               </div>
             </div>
           </div>
@@ -156,9 +163,7 @@ class Dashboard extends Component {
             <div className="main-heading py-50">
               <p className="heading">Colleges in North India</p>
             </div>
-            <div className="main-cards-wrapper">
-              {showCollegeCards}
-            </div>
+            <div className="main-cards-wrapper">{showCollegeCards}</div>
             <h1 className="text-center">THE END !!!</h1>
           </div>
         </main>

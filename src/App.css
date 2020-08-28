@@ -158,6 +158,10 @@ body {
   text-align: center;
 }
 
+.non-checked{
+  color: lightgrey;
+}
+
 /* .arrow-up-1 {
     width: 0;
     height: 0;
