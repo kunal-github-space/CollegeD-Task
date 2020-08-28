@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/CollegeD-Task/static/css/main.eef36548.chunk.css",
+    "main.js": "/CollegeD-Task/static/js/main.c1f3b326.chunk.js",
+    "main.js.map": "/CollegeD-Task/static/js/main.c1f3b326.chunk.js.map",
+    "runtime-main.js": "/CollegeD-Task/static/js/runtime-main.52c7859a.js",
+    "runtime-main.js.map": "/CollegeD-Task/static/js/runtime-main.52c7859a.js.map",
+    "static/js/2.eafc019a.chunk.js": "/CollegeD-Task/static/js/2.eafc019a.chunk.js",
+    "static/js/2.eafc019a.chunk.js.map": "/CollegeD-Task/static/js/2.eafc019a.chunk.js.map",
+    "index.html": "/CollegeD-Task/index.html",
+    "precache-manifest.cf523a6d1cff54568ed962b496bb07b6.js": "/CollegeD-Task/precache-manifest.cf523a6d1cff54568ed962b496bb07b6.js",
+    "service-worker.js": "/CollegeD-Task/service-worker.js",
+    "static/css/main.eef36548.chunk.css.map": "/CollegeD-Task/static/css/main.eef36548.chunk.css.map",
+    "static/js/2.eafc019a.chunk.js.LICENSE.txt": "/CollegeD-Task/static/js/2.eafc019a.chunk.js.LICENSE.txt",
+    "static/media/college_01.jpg": "/CollegeD-Task/static/media/college_01.8793ec0e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.52c7859a.js",
+    "static/js/2.eafc019a.chunk.js",
+    "static/css/main.eef36548.chunk.css",
+    "static/js/main.c1f3b326.chunk.js"
+  ]
+}
